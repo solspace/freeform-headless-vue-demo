@@ -25,4 +25,3 @@ pnpm dev:local   # while @solspace/freeform-vue is local-only
 Requires a Craft site with Freeform headless enabled. Vite proxies `/freeform` and `/actions` to `CRAFT_PROXY_TARGET`.
 
 See the [React demo README](../freeform-headless-react-demo/README.md) for full Craft setup steps.
-# freeform-headless-vue-demo

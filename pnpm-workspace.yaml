@@ -1,0 +1,6 @@
+minimumReleaseAgeExclude:
+  - '@solspace/freeform-core@0.1.14'
+  - '@solspace/freeform-extensions@0.1.14'
+  - '@solspace/freeform-theme-default@0.1.14'
+  - '@solspace/freeform-theme-bootstrap@0.1.14'
+  - '@solspace/freeform-theme-tailwind@0.1.14'
