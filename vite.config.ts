@@ -102,35 +102,55 @@ export default defineConfig(({ mode }) => {
 
   console.warn(`[freeform-vue-demo] packages: ${packageSource}`);
 
-  const alias = useLocalPackages
-    ? [
-        {
-          find: "@solspace/freeform-theme-default/styles.css",
-          replacement: localAlias("themes/default", "src/styles.css"),
-        },
-        {
-          find: "@solspace/freeform-theme-bootstrap/styles.css",
-          replacement: localAlias("themes/bootstrap", "src/styles.css"),
-        },
-        {
-          find: "@solspace/freeform-core",
-          replacement: localAlias("core"),
-        },
-        {
-          find: "@solspace/freeform-vue",
-          replacement: localAlias("vue"),
-        },
-        {
-          find: "@solspace/freeform-extensions",
-          replacement: localAlias("extensions"),
-        },
-        {
-          find: "@solspace/freeform-theme-default",
-          replacement: path.join(frontendRoot, "themes/default"),
-        },
-        ...localThemeAliases([...optionalThemePackages]),
-      ]
-    : localThemeAliases(unpublishedThemes);
+  // Class maps only — never theme package main entries (those pull React).
+  const classNameAliases = [
+    {
+      find: "#freeform-theme-tailwind-classnames",
+      replacement: useLocalPackages
+        ? localAlias("themes/tailwind", "src/classNames.ts")
+        : path.join(
+            rootDir,
+            "node_modules/@solspace/freeform-theme-tailwind/dist/classNames.js",
+          ),
+    },
+    {
+      find: "#freeform-theme-bootstrap-classnames",
+      replacement: useLocalPackages
+        ? localAlias("themes/bootstrap", "src/classNames.ts")
+        : path.join(
+            rootDir,
+            "node_modules/@solspace/freeform-theme-bootstrap/dist/classNames.js",
+          ),
+    },
+  ];
+
+  const alias = [
+    ...classNameAliases,
+    ...(useLocalPackages
+      ? [
+          {
+            find: "@solspace/freeform-theme-default/styles.css",
+            replacement: localAlias("themes/default", "src/styles.css"),
+          },
+          {
+            find: "@solspace/freeform-theme-bootstrap/styles.css",
+            replacement: localAlias("themes/bootstrap", "src/styles.css"),
+          },
+          {
+            find: "@solspace/freeform-core",
+            replacement: localAlias("core"),
+          },
+          {
+            find: "@solspace/freeform-vue",
+            replacement: localAlias("vue"),
+          },
+          {
+            find: "@solspace/freeform-extensions",
+            replacement: localAlias("extensions"),
+          },
+        ]
+      : localThemeAliases(unpublishedThemes)),
+  ];
 
   const exclude = [
     ...(useLocalPackages
@@ -138,8 +158,6 @@ export default defineConfig(({ mode }) => {
           "@solspace/freeform-core",
           "@solspace/freeform-vue",
           "@solspace/freeform-extensions",
-          "@solspace/freeform-theme-default",
-          ...optionalThemePackages.map((pkg) => pkg.name),
         ]
       : []),
     ...(unpublishedThemes.length && !useLocalPackages
@@ -152,7 +170,7 @@ export default defineConfig(({ mode }) => {
     define: {
       "import.meta.env.VITE_FREEFORM_PACKAGES": JSON.stringify(packageSource),
     },
-    resolve: alias.length ? { alias } : undefined,
+    resolve: { alias },
     optimizeDeps: exclude.length ? { exclude } : undefined,
     server: {
       port: Number(env.PORT || process.env.PORT || 3001),

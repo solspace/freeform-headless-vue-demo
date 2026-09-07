@@ -1,9 +1,15 @@
 # Not a monorepo. Dependencies still come from the npm registry (see package.json).
 # pnpm blocks brand-new publishes for ~24h; allow Solspace Freeform packages immediately.
+autoInstallPeers: false
+peerDependencyRules:
+  ignoreMissing:
+    - "@solspace/freeform-react"
+    - react
+    - react-dom
 minimumReleaseAgeExclude:
-  - "@solspace/freeform-core@0.1.17"
-  - "@solspace/freeform-vue@0.1.17"
-  - "@solspace/freeform-extensions@0.1.17"
-  - "@solspace/freeform-theme-default@0.1.17"
-  - "@solspace/freeform-theme-tailwind@0.1.17"
-  - "@solspace/freeform-theme-bootstrap@0.1.17"
+  - "@solspace/freeform-core@0.1.19"
+  - "@solspace/freeform-vue@0.1.19"
+  - "@solspace/freeform-extensions@0.1.19"
+  - "@solspace/freeform-theme-default@0.1.19"
+  - "@solspace/freeform-theme-tailwind@0.1.19"
+  - "@solspace/freeform-theme-bootstrap@0.1.19"
