@@ -1,6 +1,6 @@
 # Freeform Headless Vue Demo
 
-Example **Vite + Vue 3** app that renders [Solspace Freeform](https://docs.solspace.com/craft/freeform/) forms — feature parity with the [React demo](../freeform-headless-react-demo/README.md).
+Example **Vite + Vue 3** app that renders [Solspace Freeform](https://docs.solspace.com/craft/freeform/) forms — feature parity with the [React demo](https://github.com/solspace/freeform-headless-react-demo/blob/main/README.md).
 
 | Feature | Supported |
 | --- | --- |
@@ -24,4 +24,4 @@ pnpm dev:local   # while @solspace/freeform-vue is local-only
 
 Requires a Craft site with Freeform headless enabled. Vite proxies `/freeform` and `/actions` to `CRAFT_PROXY_TARGET`.
 
-See the [React demo README](../freeform-headless-react-demo/README.md) for full Craft setup steps.
+See the [React demo README](https://github.com/solspace/freeform-headless-react-demo/blob/main/README.md) for full Craft setup steps.
