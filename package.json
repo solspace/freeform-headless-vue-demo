@@ -1,7 +1,7 @@
 {
   "name": "@solspace/freeform-headless-vue-demo",
   "private": true,
-  "version": "0.1.15",
+  "version": "0.1.17",
   "type": "module",
   "description": "Example Vue app using @solspace/freeform-* from npm or a local Craft Freeform checkout",
   "scripts": {
@@ -12,12 +12,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@solspace/freeform-core": "^0.1.15",
-    "@solspace/freeform-extensions": "^0.1.15",
-    "@solspace/freeform-vue": "file:../../freeform/packages/frontend/vue",
-    "@solspace/freeform-theme-bootstrap": "file:../../freeform/packages/frontend/themes/bootstrap",
-    "@solspace/freeform-theme-default": "file:../../freeform/packages/frontend/themes/default",
-    "@solspace/freeform-theme-tailwind": "file:../../freeform/packages/frontend/themes/tailwind",
+    "@solspace/freeform-core": "^0.1.17",
+    "@solspace/freeform-extensions": "^0.1.17",
+    "@solspace/freeform-vue": "^0.1.17",
+    "@solspace/freeform-theme-bootstrap": "^0.1.17",
+    "@solspace/freeform-theme-default": "^0.1.17",
+    "@solspace/freeform-theme-tailwind": "^0.1.17",
     "bootstrap": "^5.3.7",
     "vue": "^3.5.22"
   },
