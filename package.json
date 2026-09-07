@@ -3,11 +3,9 @@
   "private": true,
   "version": "0.1.17",
   "type": "module",
-  "description": "Example Vue app using @solspace/freeform-* from npm or a local Craft Freeform checkout",
+  "description": "Example Vue app using @solspace/freeform-* from npm",
   "scripts": {
     "dev": "vite",
-    "dev:local": "FREEFORM_PACKAGES=local vite",
-    "dev:npm": "FREEFORM_PACKAGES=npm vite",
     "build": "vite build",
     "preview": "vite preview"
   },

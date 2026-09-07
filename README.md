@@ -11,18 +11,18 @@ Example **Vite + Vue 3** app that renders [Solspace Freeform](https://docs.solsp
 | Default / Tailwind / Bootstrap themes | Yes |
 | Light / Dark / System color scheme | Yes |
 | Save & Continue Later (draft URL) | Yes |
-| `FREEFORM_PACKAGES=local\|npm` | Yes |
 
 ## Quick start
 
 ```bash
 cp .env.example .env
 pnpm install
-pnpm dev          # or pnpm dev:npm — @solspace/freeform-* from npm (^0.1.17)
-# pnpm dev:local  # maintainers: sibling Craft Freeform checkout via Vite aliases
+pnpm dev
 ```
 
-Official packages: [`@solspace/freeform-vue`](https://www.npmjs.com/package/@solspace/freeform-vue), [`@solspace/freeform-core`](https://www.npmjs.com/package/@solspace/freeform-core), [`@solspace/freeform-extensions`](https://www.npmjs.com/package/@solspace/freeform-extensions), and the `@solspace/freeform-theme-*` starters.
+Open [http://localhost:3001](http://localhost:3001).
+
+Uses published `@solspace/freeform-*` packages from npm (`^0.1.17`).
 
 Requires a Craft site with Freeform headless enabled. Vite proxies `/freeform` and `/actions` to `CRAFT_PROXY_TARGET`.
 
