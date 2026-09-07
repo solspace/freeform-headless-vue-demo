@@ -1,7 +1,7 @@
 {
   "name": "@solspace/freeform-headless-vue-demo",
   "private": true,
-  "version": "0.1.17",
+  "version": "0.1.19",
   "type": "module",
   "description": "Vue demo — local Craft Freeform packages (dev branch)",
   "scripts": {
