@@ -22,7 +22,7 @@ pnpm dev
 
 Open [http://localhost:3001](http://localhost:3001).
 
-Uses published `@solspace/freeform-*` packages from npm (`^0.1.19`).
+Uses published `@solspace/freeform-*` packages from npm (`^0.1.20`).
 
 **No React.** Theme package main entries currently depend on `@solspace/freeform-react`, so this demo never imports those entries. It loads `dist/classNames.js` only (via Vite aliases) and builds Vue themes with `createTheme()` from `@solspace/freeform-vue`.
 
