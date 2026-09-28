@@ -11,6 +11,8 @@ import {
   useDemoTheme,
 } from "./composables/useDemoTheme";
 import {
+  DEMO_FORM_HANDLES,
+  DEMO_FORMS,
   defaultHandle,
   hasGraphqlToken,
   packageSource,
@@ -21,7 +23,10 @@ import {
   writeDraftToUrl,
   type DraftCredentials,
 } from "./draftUrl";
-import { graphqlFetch } from "./graphqlFetch";
+import { graphqlFetch as rawGraphqlFetch } from "./graphqlFetch";
+import { withFakerResolvedFetch } from "./resolveFakerDefaults";
+
+const graphqlFetch = withFakerResolvedFetch(rawGraphqlFetch);
 
 type ApiMode = "rest" | "graphql";
 type ViewMode = "component" | "headless" | "manifest";
@@ -105,16 +110,38 @@ function handleSubmitResponse(response: SubmitResponse) {
   }
 }
 
-function applyHandle(event: Event) {
-  event.preventDefault();
-  const next = handleDraft.value.trim();
-  if (!next) {
+const CUSTOM_HANDLE_VALUE = "__custom__";
+
+function loadHandle(next: string) {
+  const trimmed = next.trim();
+  if (!trimmed) {
     return;
   }
-  handle.value = next;
+  handleDraft.value = trimmed;
+  handle.value = trimmed;
   lastSubmit.value = null;
   manifestInfo.value = null;
 }
+
+function applyHandle(event: Event) {
+  event.preventDefault();
+  loadHandle(handleDraft.value);
+}
+
+function onFormSelect(event: Event) {
+  const value = (event.target as HTMLSelectElement).value;
+  if (value === CUSTOM_HANDLE_VALUE) {
+    handleDraft.value = "";
+    return;
+  }
+  loadHandle(value);
+}
+
+const formSelectValue = computed(() =>
+  DEMO_FORM_HANDLES.has(handleDraft.value)
+    ? handleDraft.value
+    : CUSTOM_HANDLE_VALUE,
+);
 
 function switchApiMode(next: ApiMode) {
   if (next === "graphql" && !hasGraphqlToken) {
@@ -187,20 +214,40 @@ function onManifestLoaded(manifest: FreeformManifest, via: "REST" | "GraphQL") {
         <section class="panel panel--sidebar panel--controls">
           <h2 class="panel-title">Form settings</h2>
           <p class="panel-help">
-            Use any Freeform form handle that is exposed for headless (see
-            README). Default comes from <code>VITE_FREEFORM_HANDLE</code>.
+            Pick a demo form exposed for headless, or choose
+            <strong>Custom handle</strong> for any other Freeform handle.
+            Default comes from <code>VITE_FREEFORM_HANDLE</code>.
           </p>
           <form class="handle-form" @submit="applyHandle">
             <label>
-              Form handle
-              <input
-                v-model="handleDraft"
-                placeholder="contact"
-                autocomplete="off"
-                spellcheck="false"
-              />
+              Form
+              <select
+                :value="formSelectValue"
+                aria-label="Form handle"
+                @change="onFormSelect"
+              >
+                <option
+                  v-for="form in DEMO_FORMS"
+                  :key="form.handle"
+                  :value="form.handle"
+                >
+                  {{ form.label }} ({{ form.handle }})
+                </option>
+                <option :value="CUSTOM_HANDLE_VALUE">Custom handle…</option>
+              </select>
             </label>
-            <button type="submit">Load form</button>
+            <template v-if="formSelectValue === CUSTOM_HANDLE_VALUE">
+              <label>
+                Custom handle
+                <input
+                  v-model="handleDraft"
+                  placeholder="yourFormHandle"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+              </label>
+              <button type="submit">Load form</button>
+            </template>
           </form>
           <p class="panel-meta">
             Active handle: <code>{{ handle }}</code>

@@ -3,6 +3,9 @@ import { computed } from "vue";
 import type { SubmitResponse } from "@solspace/freeform-core";
 import { FormLoader, useFreeform, type FreeformVueTheme } from "@solspace/freeform-vue";
 import { baseUrl, demoExtensions } from "../demoConfig";
+import { withFakerResolvedFetch } from "../resolveFakerDefaults";
+
+const demoFetch = withFakerResolvedFetch();
 
 const props = withDefaults(
   defineProps<{
@@ -25,7 +28,7 @@ const emit = defineEmits<{
 const form = useFreeform(() => ({
   handle: props.handle,
   baseUrl,
-  fetch: props.fetchImpl,
+  fetch: props.fetchImpl ?? demoFetch,
   extensions: demoExtensions,
   draftToken: props.draftToken,
   draftKey: props.draftKey,

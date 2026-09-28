@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_FREEFORM_HANDLE?: string;
+  readonly VITE_FREEFORM_BASE_URL?: string;
   readonly VITE_FREEFORM_PACKAGES?: string;
   readonly VITE_GRAPHQL_PATH?: string;
   readonly VITE_GRAPHQL_TOKEN?: string;

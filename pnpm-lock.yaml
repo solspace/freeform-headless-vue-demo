@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@faker-js/faker':
+        specifier: ^10.6.0
+        version: 10.6.0
       '@solspace/freeform-core':
         specifier: ^1.0.0
         version: 1.0.0
@@ -173,6 +176,10 @@ packages:
   '@babel/types@7.29.8':
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
+
+  '@faker-js/faker@10.6.0':
+    resolution: {integrity: sha512-3RQHgEtvL1Frl/d1cSreo7qhJ3Gk1OdNUai/CtZ8G+wYeRQnJih3s9xJ9/kgYekPQRdwgh0HXRPqMlzWGwivIQ==}
+    engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
 
   '@friendlycaptcha/sdk@0.1.37':
     resolution: {integrity: sha512-A3XPZgNTWC2WioxbhAGeXKtwZZorwQutMeuNVxgdxT7eMWqxOZiu8xDUoOqRBoR8O2bXuIJR+MBffhVpp4zTjQ==}
@@ -1052,6 +1059,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
+
+  '@faker-js/faker@10.6.0': {}
 
   '@friendlycaptcha/sdk@0.1.37': {}
 
