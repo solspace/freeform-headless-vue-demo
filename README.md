@@ -11,6 +11,7 @@ Example **Vite + Vue 3** app that renders [Solspace Freeform](https://docs.solsp
 | Default / Tailwind / Bootstrap themes | Yes |
 | Light / Dark / System color scheme | Yes |
 | Save & Continue Later (draft URL) | Yes |
+| Stage Preview / Code (copy-paste starters) | Yes |
 
 ## Quick start
 
