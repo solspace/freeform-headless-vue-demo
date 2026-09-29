@@ -29,6 +29,4 @@ Uses published `@solspace/freeform-*` packages from npm (`^1.0.0`).
 
 Requires a Craft site with Freeform headless enabled. Vite proxies `/freeform` and `/actions` to `CRAFT_PROXY_TARGET`.
 
-**Production URLs (Cloudflare):** see [CLOUDFLARE.md](./CLOUDFLARE.md) — public paths under `demo.solspace.com/freeform-headless/vue/`.
-
 See the [React demo README](https://github.com/solspace/freeform-headless-react-demo/blob/main/README.md) for full Craft setup steps.
