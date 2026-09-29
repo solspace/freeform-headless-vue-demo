@@ -62,6 +62,9 @@ const configuredBaseUrl = import.meta.env.VITE_FREEFORM_BASE_URL as
   | string
   | undefined;
 
+/** Vite public base (e.g. /freeform-headless/vue/ in production). */
+const assetBase = import.meta.env.BASE_URL;
+
 const { theme, bootstrapPreviewDark } = useDemoTheme(colorScheme, themeSkin);
 
 watch(colorScheme, (scheme) => writeStoredColorScheme(scheme));
@@ -188,7 +191,7 @@ function onManifestLoaded(manifest: FreeformManifest, via: "REST" | "GraphQL") {
         <h1 class="header-brand">
           <img
             class="header-brand__icon"
-            src="/solspace-icon.png"
+            :src="`${assetBase}solspace-icon.png`"
             alt=""
             width="32"
             height="32"

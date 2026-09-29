@@ -102,6 +102,22 @@ export default defineConfig(({ mode }) => {
 
   console.warn(`[freeform-vue-demo] packages: ${packageSource}`);
 
+  /** Public path behind Cloudflare: demo.solspace.com/freeform-headless/vue/ */
+  const baseFromEnv = (
+    env.VITE_BASE_PATH ||
+    process.env.VITE_BASE_PATH ||
+    ""
+  ).trim();
+  const base = baseFromEnv
+    ? baseFromEnv.endsWith("/")
+      ? baseFromEnv
+      : `${baseFromEnv}/`
+    : mode === "production"
+      ? "/freeform-headless/vue/"
+      : "/";
+
+  console.warn(`[freeform-vue-demo] base: ${base}`);
+
   // Class maps only — never theme package main entries (those pull React).
   const classNameAliases = [
     {
@@ -166,6 +182,7 @@ export default defineConfig(({ mode }) => {
   ];
 
   return {
+    base,
     plugins: [vue(), vueJsx(), tailwindcss()],
     define: {
       "import.meta.env.VITE_FREEFORM_PACKAGES": JSON.stringify(packageSource),
