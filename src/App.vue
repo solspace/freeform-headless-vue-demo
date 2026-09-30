@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, defineAsyncComponent, ref, watch } from "vue";
 import type { FreeformManifest, SubmitResponse } from "@solspace/freeform-core";
 import ComponentForm from "./components/ComponentForm.vue";
-import CodePreviewPanel from "./components/CodePreviewPanel.vue";
 import DemoIcon from "./components/DemoIcon.vue";
 import GraphqlManifestPanel from "./components/GraphqlManifestPanel.vue";
 import HeadlessForm from "./components/HeadlessForm.vue";
 import ManifestPanel from "./components/ManifestPanel.vue";
+
+const CodePreviewPanel = defineAsyncComponent(
+  () => import("./components/CodePreviewPanel.vue"),
+);
 import {
   type ColorScheme,
   type ThemeSkin,
