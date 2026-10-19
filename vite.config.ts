@@ -53,19 +53,12 @@ function localAlias(subdir: string, file = "src/index.ts"): string {
 
 function localThemeAliases(pkgs: (typeof optionalThemePackages)[number][]) {
   return pkgs.flatMap((pkg) => {
-    const entries: Array<{ find: string; replacement: string }> = [
+    const entries: Array<{ find: string | RegExp; replacement: string }> = [
       {
-        find: pkg.name,
+        find: new RegExp(`^${pkg.name.replace(/\//g, "\\/")}$`),
         replacement: localAlias(pkg.subdir),
       },
     ];
-
-    if (pkg.name === "@solspace/freeform-theme-bootstrap") {
-      entries.unshift({
-        find: "@solspace/freeform-theme-bootstrap/styles.css",
-        replacement: localAlias("themes/bootstrap", "src/styles.css"),
-      });
-    }
 
     return entries;
   });
@@ -140,28 +133,22 @@ export default defineConfig(({ mode }) => {
     },
   ];
 
+  // Theme CSS is handled by `localThemeCssPlugin` (virtual string modules).
+  // Do not alias `*/styles.css` to a file path — that drops `?inline`.
   const alias = [
     ...classNameAliases,
     ...(useLocalPackages
       ? [
           {
-            find: "@solspace/freeform-theme-default/styles.css",
-            replacement: localAlias("themes/default", "src/styles.css"),
-          },
-          {
-            find: "@solspace/freeform-theme-bootstrap/styles.css",
-            replacement: localAlias("themes/bootstrap", "src/styles.css"),
-          },
-          {
-            find: "@solspace/freeform-core",
+            find: /^@solspace\/freeform-core$/,
             replacement: localAlias("core"),
           },
           {
-            find: "@solspace/freeform-vue",
+            find: /^@solspace\/freeform-vue$/,
             replacement: localAlias("vue"),
           },
           {
-            find: "@solspace/freeform-extensions",
+            find: /^@solspace\/freeform-extensions$/,
             replacement: localAlias("extensions"),
           },
         ]
@@ -181,9 +168,50 @@ export default defineConfig(({ mode }) => {
       : []),
   ];
 
+  const localThemeCssPlugin = useLocalPackages
+    ? {
+        name: "freeform-local-theme-css",
+        enforce: "pre" as const,
+        resolveId(source: string) {
+          const map: Record<string, string> = {
+            "@solspace/freeform-theme-default/styles.css":
+              "\0freeform-theme-default-css",
+            "@solspace/freeform-theme-bootstrap/styles.css":
+              "\0freeform-theme-bootstrap-css",
+          };
+          for (const [id, virtualId] of Object.entries(map)) {
+            if (source === id || source.startsWith(`${id}?`)) {
+              return virtualId;
+            }
+          }
+          return undefined;
+        },
+        load(id: string) {
+          const files: Record<string, string> = {
+            "\0freeform-theme-default-css": localAlias(
+              "themes/default",
+              "src/styles.css",
+            ),
+            "\0freeform-theme-bootstrap-css": localAlias(
+              "themes/bootstrap",
+              "src/styles.css",
+            ),
+          };
+          const file = files[id];
+          if (!file) {
+            return undefined;
+          }
+          const css = fs.readFileSync(file, "utf8");
+          return `export default ${JSON.stringify(css)}`;
+        },
+      }
+    : null;
+
   return {
     base,
-    plugins: [vue(), vueJsx(), tailwindcss()],
+    plugins: [localThemeCssPlugin, vue(), vueJsx(), tailwindcss()].filter(
+      Boolean,
+    ),
     define: {
       "import.meta.env.VITE_FREEFORM_PACKAGES": JSON.stringify(packageSource),
     },

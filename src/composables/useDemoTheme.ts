@@ -1,5 +1,25 @@
-import { computed, onMounted, onUnmounted, ref, watch, type Ref } from "vue";
-import { createTheme, defaultTheme, type FreeformVueTheme } from "@solspace/freeform-vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  onMounted,
+  onUnmounted,
+  ref,
+  watch,
+  type PropType,
+  type Ref,
+} from "vue";
+import {
+  createTheme,
+  defaultTheme,
+  type FreeformVueTheme,
+} from "@solspace/freeform-vue";
+
+type BootstrapFormProps = {
+  form: unknown;
+  class?: string;
+  onSubmit: (event: Event) => void;
+};
 import {
   darkClassNames as twDark,
   darkClassNamesByType as twDarkByType,
@@ -17,6 +37,44 @@ export type ColorScheme = "light" | "dark" | "system";
 export type ThemeSkin = "default" | "tailwind" | "bootstrap";
 
 /**
+ * Mirrors React `@solspace/freeform-theme-bootstrap` Form wrappers — Bootstrap
+ * dark mode needs `data-bs-theme="dark"` on the form (classNames alone look grey).
+ */
+function bootstrapForm(colorMode: "light" | "dark") {
+  return defineComponent({
+    name: colorMode === "dark" ? "BootstrapDarkForm" : "BootstrapLightForm",
+    props: {
+      form: {
+        type: Object as PropType<BootstrapFormProps["form"]>,
+        required: true,
+      },
+      class: { type: String, default: undefined },
+      onSubmit: {
+        type: Function as PropType<BootstrapFormProps["onSubmit"]>,
+        required: true,
+      },
+    },
+    setup(props, { slots }) {
+      return () =>
+        h(
+          "form",
+          {
+            class: props.class,
+            onSubmit: props.onSubmit,
+            novalidate: true,
+            "data-bs-theme": colorMode,
+            "data-freeform-bootstrap": colorMode === "dark" ? "dark" : true,
+          },
+          slots.default?.(),
+        );
+    },
+  });
+}
+
+const BootstrapLightForm = bootstrapForm("light");
+const BootstrapDarkForm = bootstrapForm("dark");
+
+/**
  * Theme npm packages currently peer on `@solspace/freeform-react` and their
  * main entry imports React. Vue only needs the class maps — we import
  * `dist/classNames.js` via Vite aliases and assemble themes with createTheme().
@@ -26,6 +84,7 @@ function skinTheme(
   classNames: FreeformVueTheme["classNames"],
   classNamesByType: FreeformVueTheme["classNamesByType"],
   colorScheme: "light" | "dark",
+  components?: FreeformVueTheme["renderers"],
 ): FreeformVueTheme {
   return createTheme({
     name,
@@ -33,6 +92,7 @@ function skinTheme(
     classNames,
     classNamesByType,
     defaults: { colorScheme },
+    renderers: components,
   });
 }
 
@@ -59,12 +119,14 @@ const bootstrapLight = skinTheme(
   bsLight,
   bsLightByType(),
   "light",
+  { components: { Form: BootstrapLightForm } },
 );
 const bootstrapDark = skinTheme(
   "bootstrap-dark",
   bsDark,
   bsDarkByType(),
   "dark",
+  { components: { Form: BootstrapDarkForm } },
 );
 
 export function useDemoTheme(

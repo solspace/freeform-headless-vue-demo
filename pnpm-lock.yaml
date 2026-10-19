@@ -12,23 +12,23 @@ importers:
         specifier: ^10.6.0
         version: 10.6.0
       '@solspace/freeform-core':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@solspace/freeform-extensions':
-        specifier: ^1.2.0
-        version: 1.2.0(@solspace/freeform-core@1.2.0)
+        specifier: ^1.2.1
+        version: 1.2.1(@solspace/freeform-core@1.2.1)
       '@solspace/freeform-theme-bootstrap':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@solspace/freeform-theme-default':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@solspace/freeform-theme-tailwind':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@solspace/freeform-vue':
-        specifier: ^1.2.0
-        version: 1.2.0(@solspace/freeform-core@1.2.0)(vue@3.5.42(typescript@5.9.3))
+        specifier: ^1.2.1
+        version: 1.2.1(@solspace/freeform-core@1.2.1)(vue@3.5.42(typescript@5.9.3))
       bootstrap:
         specifier: ^5.3.7
         version: 5.3.8
@@ -339,31 +339,31 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@solspace/freeform-core@1.2.0':
-    resolution: {integrity: sha512-nNSfLeQlnME9bJyqqQWLTTcju+Q4MisBmWO2W4k/nJSLW/lc3fK6TgVqajF0NDkBQN8DPcHi+Ki6CRvwilkTHQ==}
+  '@solspace/freeform-core@1.2.1':
+    resolution: {integrity: sha512-vtyTkvv0w0yMKHTdNZi/51yjKMQw7QgfupRMUKwkPVQrykFedzG4VkT/9RQ9fy/Lz3CHXBPLD+pMjbkEGMyQmQ==}
 
-  '@solspace/freeform-extensions@1.2.0':
-    resolution: {integrity: sha512-vmo1D8aeZW2FNXaXaRj4xVK8GgBQGi68fND5tPxhV24ZcTXiC5/o/4F6pFUa0smoxvNGhK7xn5g+giVrDjacyA==}
+  '@solspace/freeform-extensions@1.2.1':
+    resolution: {integrity: sha512-tPitlUYIBMu7l8/LL8wSSTjUdcbPyBSGv8hVelVvylDaPl+rd4U2ulY0m4VKImOzQjM8OsCqBuFHIcplHuz6LQ==}
     peerDependencies:
       '@solspace/freeform-core': ^1.0.0
 
-  '@solspace/freeform-theme-bootstrap@1.2.0':
-    resolution: {integrity: sha512-DK/LPt7rN4UamJv1gQTyvDjjJ76jWIwnX2+COV/bt6A3vqSIlH6cAvKq9OkkNkAPtjjScfjBNTRtwA5Zzj7Lpw==}
+  '@solspace/freeform-theme-bootstrap@1.2.1':
+    resolution: {integrity: sha512-hSQA2rDZQLbpWatLOT1TizVF3oHHfhgWierueDBn/VYRBV7Bvevg0oKkKEvFNnhyWr1lP7D+a+sX9SIGSQKS7Q==}
     peerDependencies:
       '@solspace/freeform-react': ^1.0.0
 
-  '@solspace/freeform-theme-default@1.2.0':
-    resolution: {integrity: sha512-wf3WwRD1JoHv8H1TBBncGPA5YnAEY7gW4P5Erd3LGfuqREN3xUHxulBOYlPOv1XwoZv6Qku0xJSYJCzdCQ3Afg==}
+  '@solspace/freeform-theme-default@1.2.1':
+    resolution: {integrity: sha512-F4hYJcdwVD7pnBCyhA1Hm6ch9IKwqv5RJaiSLBrGz17/8GOgXEWWNtq0bCKsh6ZDukA4u6l7jQWiBFcZJGZcDg==}
     peerDependencies:
       '@solspace/freeform-react': ^1.0.0
 
-  '@solspace/freeform-theme-tailwind@1.2.0':
-    resolution: {integrity: sha512-oOx87YN2OB+SWAxFL9EfjoIXTCsT0zoyoRAXVNPXUKxhyjJnEMZq1+xffpQ4VY2iaean/SH/y4olNnmFYkc+7w==}
+  '@solspace/freeform-theme-tailwind@1.2.1':
+    resolution: {integrity: sha512-nAfqcTs9h9bI8K9O3ZdQZeQ6w4zabmO7q3a+HwPdR3MJA0ab1+rKrWUqYjIRma+PvFqmgqaPj4dfmYniyRDO6A==}
     peerDependencies:
       '@solspace/freeform-react': ^1.0.0
 
-  '@solspace/freeform-vue@1.2.0':
-    resolution: {integrity: sha512-9fTWf2LTVfalSizA5gfeF6SOnorOjIHt3t8RGc4YO6roIMZjO9mJ/yAKJYPg77h6ld8DsNKfoCSrGvWavdHJ6A==}
+  '@solspace/freeform-vue@1.2.1':
+    resolution: {integrity: sha512-DTtZ7X6N2SnPn+m3qsPseICaxGOkM6ycSOUBcmBU52biLobNp0hs+mTrLGKjdZEvdH4SXKsIZpxvq8yRahxnHA==}
     peerDependencies:
       '@solspace/freeform-core': ^1.0.0
       vue: ^3.5.43
@@ -627,8 +627,8 @@ packages:
   estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
-  expression-language@2.7.0:
-    resolution: {integrity: sha512-9iwh2dHLXf1HLIxwD/Rzts62EkqCP5+klm802f+UQcgBNOs9hhxx8MyUYu94iERZr7ief+WsRcEZQaDd63jazQ==}
+  expression-language@2.7.1:
+    resolution: {integrity: sha512-i6F8AJhk50AC7HIPPVmbrUy8JiNajaNxR+zTuuiyde+hqzbNrUoZy9Ytgvv55LMG2nfjWYWoy5Ap3V1wPZKVBg==}
 
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
@@ -677,8 +677,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  libphonenumber-js@1.13.14:
-    resolution: {integrity: sha512-llihgCcx0BFLksecLP+x1J+6JDE1GsXS1RN/LoPF6qcwpeQcnjj0lcvZxY8AzbEpYwyZWPZW/nDuqkqzm3amiw==}
+  libphonenumber-js@1.13.15:
+    resolution: {integrity: sha512-AHdhEQeDFEJ4GKDAQ9AwxChy+v2kUILUB3TGQRpkXMkWePjXTU/WQEzWVQoIx/Gz8fE73Wr5SEuZCy2vk8jrMQ==}
 
   lightningcss-android-arm64@1.32.0:
     resolution: {integrity: sha512-YK7/ClTt4kAK0vo6w3X+Pnm0D2cf2vPHbhOXdoNti1Ga0al1P4TBZhwjATvjNwLEBCnKvjJc2jQgHXH0NEwlAg==}
@@ -1326,28 +1326,28 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@solspace/freeform-core@1.2.0':
+  '@solspace/freeform-core@1.2.1':
     dependencies:
-      expression-language: 2.7.0
-      libphonenumber-js: 1.13.14
+      expression-language: 2.7.1
+      libphonenumber-js: 1.13.15
 
-  '@solspace/freeform-extensions@1.2.0(@solspace/freeform-core@1.2.0)':
+  '@solspace/freeform-extensions@1.2.1(@solspace/freeform-core@1.2.1)':
     dependencies:
       '@friendlycaptcha/sdk': 0.1.37
       '@paypal/paypal-js': 9.8.0
-      '@solspace/freeform-core': 1.2.0
+      '@solspace/freeform-core': 1.2.1
       '@stripe/stripe-js': 8.11.0
-      expression-language: 2.7.0
+      expression-language: 2.7.1
 
-  '@solspace/freeform-theme-bootstrap@1.2.0': {}
+  '@solspace/freeform-theme-bootstrap@1.2.1': {}
 
-  '@solspace/freeform-theme-default@1.2.0': {}
+  '@solspace/freeform-theme-default@1.2.1': {}
 
-  '@solspace/freeform-theme-tailwind@1.2.0': {}
+  '@solspace/freeform-theme-tailwind@1.2.1': {}
 
-  '@solspace/freeform-vue@1.2.0(@solspace/freeform-core@1.2.0)(vue@3.5.42(typescript@5.9.3))':
+  '@solspace/freeform-vue@1.2.1(@solspace/freeform-core@1.2.1)(vue@3.5.42(typescript@5.9.3))':
     dependencies:
-      '@solspace/freeform-core': 1.2.0
+      '@solspace/freeform-core': 1.2.1
       vue: 3.5.42(typescript@5.9.3)
 
   '@stripe/stripe-js@8.11.0': {}
@@ -1610,7 +1610,7 @@ snapshots:
 
   estree-walker@2.0.2: {}
 
-  expression-language@2.7.0:
+  expression-language@2.7.1:
     dependencies:
       dayjs: 1.11.23
       locutus: 3.0.36
@@ -1654,7 +1654,7 @@ snapshots:
 
   json5@2.2.3: {}
 
-  libphonenumber-js@1.13.14: {}
+  libphonenumber-js@1.13.15: {}
 
   lightningcss-android-arm64@1.32.0:
     optional: true

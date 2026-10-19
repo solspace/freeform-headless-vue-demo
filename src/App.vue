@@ -15,6 +15,7 @@ import {
   type ThemeSkin,
   useDemoTheme,
 } from "./composables/useDemoTheme";
+import { useThemeCss } from "./composables/useThemeCss";
 import {
   DEMO_FORM_HANDLES,
   DEMO_FORMS,
@@ -69,6 +70,7 @@ const configuredBaseUrl = import.meta.env.VITE_FREEFORM_BASE_URL as
 const assetBase = import.meta.env.BASE_URL;
 
 const { theme, bootstrapPreviewDark } = useDemoTheme(colorScheme, themeSkin);
+useThemeCss(themeSkin);
 
 watch(colorScheme, (scheme) => writeStoredColorScheme(scheme));
 watch(themeSkin, (skin) => writeStoredThemeSkin(skin));
